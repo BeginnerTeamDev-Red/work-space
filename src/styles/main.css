@@ -1,0 +1,31 @@
+body {
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #ffecd2 0%, #fcb69f 100%);
+}
+
+li {
+    list-style-type: square;
+}
+
+.border-red {
+    width: 250px;
+    height: auto;
+    border: thick double #ff0000;
+    outline: 0.2rem solid #ff0000;
+}
+
+.font-sm {
+    font-size: 0.5rem;
+}
+
+ul.colored-marker li::marker {
+    color: #ff0000;
+}
+
+.text-red {
+    color: #ff0000;
+}
+
+.text-blue {
+    color: #0d6efd
+}
