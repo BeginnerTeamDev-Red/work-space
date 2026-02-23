@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>おみくじ結果</title>
+  <link rel="stylesheet" href="./styles/main.css" />
+</head>
+
+    <!--おみくじの結果全体をまとめるクラス -->
+<body>
+  <main class="omikujiResult">
+    
+
+    <!-- 運勢 -->
+    <div class="Unsei">
+      <img id="UnseiImage" alt="運勢" />
+     </div>
+
+    <!-- メッセージ -->
+    <p id="UnseiMessage"></p>
+
+    <!-- ラッキーアイテム -->
+    <div class="luckyItem">
+      <p>ラッキーカラー：<span id="luckyColor"></span></p>
+      <p>ラッキーナンバー：<span id="luckyNumber"></span></p>
+      <p>ラッキー言語：<span id="luckyLang"></span></p>
+    </div>
+
+    <!-- 次のおみくじと最初の画面に戻るボタン -->
+    <div class="omikujiBUtton">
+      <button id="againBtn" type="button">もう一度</button>
+      <button id="backBtn" type="button">戻る</button>
+    </div>
+  </main>
+
+  <!-- main.js で処理を記載 -->
+  <script src="./scripts/main.js" defer></script>
+</body>
+</html>
