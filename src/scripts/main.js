@@ -98,7 +98,11 @@ const selectContent = () => {
 
 const createOmikuji = () => {
   const { omikuji, msg, luckyColor, luckyNumber, luckyLang } = selectContent();
+
+  const renderMsg = (msg) => msg.replace(/\n/g, "<br>");
+
   const el = document.createElement("div");
+
   el.classList.add("text-red", "border-red", "text-center", "bg-white");
   el.id = "omikuji-result";
   el.innerHTML = `
@@ -116,7 +120,7 @@ const createOmikuji = () => {
     <!-- メッセージ -->
     <div class="text-center">
         <p class="d-inline-block text-start px-3 mb-0">
-        ${msg}
+        ${renderMsg(msg)}
         </p>
     </div>
     <!-- ラッキーアイテム -->
