@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
@@ -24,11 +24,16 @@
   </head>
 
   <body>
-    <div class="min-vh-100 d-flex flex-column align-items-center text-center px-3">
-      <main class="d-flex flex-column justify-content-center align-items-center flex-grow-1 gap-3">
+    <div
+      id="init-display"
+      class="min-vh-100 d-flex flex-column align-items-center text-center px-3"
+    >
+      <main
+        class="d-flex flex-column justify-content-center align-items-center flex-grow-1 gap-3"
+      >
         <header class="text-red">
           <h1 class="m-0">
-            ソフトウェア開発<br/>
+            ソフトウェア開発<br />
             みくじ
           </h1>
         </header>
@@ -41,7 +46,7 @@
         />
 
         <div class="mb-3">
-          <a class="btn btn-danger btn-lg px-4" href="omikuji.html">おみくじを引く</a>
+          <button id="draw-btn" class="btn btn-danger">おみくじを引く</button>
         </div>
       </main>
 
@@ -53,7 +58,12 @@
         <p class="font-sm text-red mb-0 mt-2">©︎ソフトウェア開発みくじ</p>
       </footer>
     </div>
+    <div
+      id="result-display"
+      class="d-none d-flex flex-column mt-3 align-items-center justify-content-center"
+    ></div>
 
+    <script src="scripts/main.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
