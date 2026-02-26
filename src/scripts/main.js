@@ -96,10 +96,14 @@ const selectContent = () => {
   return { omikuji, msg, luckyColor, luckyNumber, luckyLang };
 };
 
-const createOmikuji = () => {
-  const { omikuji, msg, luckyColor, luckyNumber, luckyLang } = selectContent();
+const drawOmikuji = () => {
+  return selectContent();
+};
 
-  const renderMsg = (msg) => msg.replace(/\n/g, "<br>");
+const createOmikuji = (result) => {
+  const { omikuji, msg, luckyColor, luckyNumber, luckyLang } = result;
+
+  const renderMsg = (text) => text.replace(/\n/g, "<br>");
 
   const el = document.createElement("div");
 
@@ -147,17 +151,90 @@ const createOmikuji = () => {
   return el;
 };
 
-const showResult = () => {
+const showResult = (result) => {
   displayNone(config.initPage);
   displayBlock(config.resultPage);
-  config.resultPage.replaceChildren(createOmikuji());
+  config.resultPage.replaceChildren(createOmikuji(result));
+};
+
+const animEl = document.querySelector(".omikuji-anim");
+const stickEl = document.querySelector(".omikuji-stick");
+const drawBtn = document.getElementById("draw-btn");
+
+let isAnimating = false;
+
+const waitAnimationEnd = (el, expectedName) => {
+  return new Promise((resolve) => {
+    const onEnd = (event) => {
+      if (event.target !== el) {
+        return;
+      }
+      if (expectedName && event.animationName !== expectedName) {
+        return;
+      }
+      el.removeEventListener("animationend", onEnd);
+      el.removeEventListener("animationcancel", onCancel);
+      resolve();
+    };
+
+    const onCancel = () => {
+      el.removeEventListener("animationend", onEnd);
+      el.removeEventListener("animationcancel", onCancel);
+      resolve();
+    };
+
+    el.addEventListener("animationend", onEnd);
+    el.addEventListener("animationcancel", onCancel);
+  });
+};
+
+const resetAnimationState = () => {
+  if (!animEl) {
+    return;
+  }
+
+  animEl.classList.remove("is-shaking", "is-stick-rising", "is-waiting-result");
+  void animEl.offsetWidth;
 };
 
 const showInit = () => {
   displayNone(config.resultPage);
   displayBlock(config.initPage);
   config.resultPage.innerHTML = "";
+  resetAnimationState();
+  isAnimating = false;
+  if (drawBtn) {
+    drawBtn.disabled = false;
+  }
 };
 
-const drawBtn = document.getElementById("draw-btn");
-drawBtn.addEventListener("click", showResult);
+const runDrawSequence = async () => {
+  if (!animEl || !stickEl || !drawBtn || isAnimating) {
+    return;
+  }
+
+  isAnimating = true;
+  drawBtn.disabled = true;
+
+  resetAnimationState();
+
+  animEl.classList.add("is-shaking");
+  await waitAnimationEnd(animEl, "boxShake");
+
+  animEl.classList.remove("is-shaking");
+  void animEl.offsetWidth;
+
+  animEl.classList.add("is-stick-rising");
+  await waitAnimationEnd(stickEl, "stickRise");
+
+  const result = drawOmikuji();
+
+  animEl.classList.add("is-waiting-result");
+  await waitAnimationEnd(animEl, "resultDelay");
+
+  showResult(result);
+};
+
+if (drawBtn) {
+  drawBtn.addEventListener("click", runDrawSequence);
+}

@@ -38,12 +38,26 @@
           </h1>
         </header>
 
-        <img
-          src="assets/omikuji.png"
-          class="img-fluid d-block mx-auto omikuji-image"
-          alt="おみくじの筒のイラスト"
-          loading="lazy"
-        />
+        <div class="omikuji-anim" aria-hidden="true">
+          <img
+            src="assets/omikuji_box.png"
+            class="omikuji-box"
+            alt=""
+            decoding="async"
+          />
+          <img
+            src="assets/omikuji_stick.png"
+            class="omikuji-stick"
+            alt=""
+            decoding="async"
+          />
+          <img
+            src="assets/omikuji_hole.png"
+            class="omikuji-hole"
+            alt=""
+            decoding="async"
+          />
+        </div>
 
         <div class="mb-3">
           <button id="draw-btn" class="btn btn-danger">おみくじを引く</button>
