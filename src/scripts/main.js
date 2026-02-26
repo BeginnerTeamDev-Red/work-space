@@ -103,7 +103,7 @@ const drawOmikuji = () => {
 const createOmikuji = (result) => {
   const { omikuji, msg, luckyColor, luckyNumber, luckyLang } = result;
 
-  const renderMsg = (text) => text.replace(/\n/g, "<br>");
+  const renderMsg = (msg) => msg.replace(/\n/g, "<br>");
 
   const el = document.createElement("div");
 
