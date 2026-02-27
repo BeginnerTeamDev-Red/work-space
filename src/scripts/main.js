@@ -155,6 +155,16 @@ const showResult = (result) => {
   displayNone(config.initPage);
   displayBlock(config.resultPage);
   config.resultPage.replaceChildren(createOmikuji(result));
+
+  const name = result?.omikuji?.name;
+
+  if (name === "大吉") {
+    kamiFubuki();
+  }
+
+  if (name === "凶" || name === "大凶") {
+    thunderLightening();
+  }
 };
 
 const animEl = document.querySelector(".omikuji-anim");
@@ -238,3 +248,29 @@ const runDrawSequence = async () => {
 if (drawBtn) {
   drawBtn.addEventListener("click", runDrawSequence);
 }
+
+/*Special effect
+ 大吉: 紙吹雪 */
+const kamiFubuki = (count = 60) => {
+  const colors = ["#ff4d4d", "#ffd24d", "#4dd2ff", "#7dff4d", "#b84dff"];
+
+  for (let i = 0; i < count; i++) {
+    const parts = document.createElement("div");
+    parts.className = "kami-fubuki"; 
+    parts.style.left = Math.random() * 100 + "vw";
+    parts.style.background = colors[Math.floor(Math.random() * colors.length)];
+    parts.style.animationDelay = Math.random() * 0.3 + "s";
+    parts.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+    document.body.appendChild(parts);
+    setTimeout(() => parts.remove(), 2500);
+  }
+};
+
+/* 凶&大凶: 雷 */
+const thunderLightening = () => {
+  const flash = document.createElement("div");
+  flash.className = "lightning-flash";
+  document.body.appendChild(flash);
+  setTimeout(() => flash.remove(), 1200);
+};
