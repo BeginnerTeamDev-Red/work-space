@@ -56,10 +56,80 @@ ul.colored-marker li::marker {
     color: #0d6efd;
 }
 
-.omikuji-image {
+.omikuji-anim {
+    --stick-left: 50%;
+    --stick-bottom: 35%;
+    --stick-width: 40%;
+    --stick-rise: -45%;
+    --result-delay: 0.35s;
+    position: relative;
     width: clamp(150px, 32vw, 260px);
+    transform-origin: 50% 72%;
 }
 
+.omikuji-box,
+.omikuji-stick,
+.omikuji-hole {
+    width: 100%;
+    display: block;
+}
+
+.omikuji-stick {
+    position: absolute;
+    left: var(--stick-left);
+    bottom: var(--stick-bottom);
+    width: var(--stick-width);
+    z-index: 2;
+    transform: translate(-50%, 0);
+    transform-origin: 50% 100%;
+    will-change: transform;
+}
+
+.omikuji-box {
+    position: relative;
+    z-index: 1;
+}
+
+.omikuji-hole {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.omikuji-anim.is-shaking {
+    animation: boxShake 0.6s ease-out forwards;
+}
+
+.omikuji-anim.is-stick-rising .omikuji-stick {
+    animation: stickRise 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.omikuji-anim.is-waiting-result {
+    animation: resultDelay var(--result-delay) linear forwards;
+}
+
+@keyframes boxShake {
+    0% { transform: translateX(0) rotate(0deg); }
+    15% { transform: translateX(-2px) rotate(-4deg); }
+    30% { transform: translateX(2px) rotate(4deg); }
+    45% { transform: translateX(-1.5px) rotate(-3deg); }
+    60% { transform: translateX(1.5px) rotate(3deg); }
+    75% { transform: translateX(-0.8px) rotate(-1.6deg); }
+    90% { transform: translateX(0.5px) rotate(1deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes stickRise {
+    0% { transform: translate(-50%, 0); }
+    72% { transform: translate(-50%, var(--stick-rise)); }
+    100% { transform: translate(-50%, calc(var(--stick-rise) + 4%)); }
+}
+
+@keyframes resultDelay {
+    from { opacity: 1; }
+    to { opacity: 1; }
+}
 
 a.text-red,
 a.text-red:link,
