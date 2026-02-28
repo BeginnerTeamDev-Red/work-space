@@ -258,7 +258,7 @@ const kamiFubuki = (count = 60) => {
     const parts = document.createElement("div");
     parts.className = "kami-fubuki"; 
     parts.style.left = Math.random() * 100 + "vw";
-    parts.style.background = colors[Math.floor(Math.random() * colors.length)];
+    parts.style.background = pick(colors);
     parts.style.animationDelay = Math.random() * 0.3 + "s";
     parts.style.transform = `rotate(${Math.random() * 360}deg)`;
 
