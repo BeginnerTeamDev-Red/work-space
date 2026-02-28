@@ -149,3 +149,36 @@ a.text-red:hover {
     outline: 3px solid rgba(220, 53, 69, 0.45);
     outline-offset: 3px;
 }
+
+/*Special effect*/
+.kami-fubuki {
+  position: fixed;
+  top: -10px;
+  width: 8px;
+  height: 12px;
+  opacity: 0.9;
+  animation: kami-fubuki-fall 1.8s linear forwards;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+@keyframes kami-fubuki-fall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(540deg); }
+}
+
+.lightning-flash {
+  position: fixed;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  animation: flash 0.28s ease-in-out 3;
+}
+
+@keyframes flash {
+  0% { opacity: 0; }
+  30% { opacity: 0.95; }
+  100% { opacity: 0; }
+}
