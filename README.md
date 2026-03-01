@@ -21,8 +21,8 @@ project/
   README.md
   docs/
     project-plan.md
+  index.html
   src/
-    index.html
     pages/
       about.html
       developers.html
@@ -81,7 +81,7 @@ project/
 ## セットアップ
 
 - リポジトリをクローン
-- `src/index.html` をブラウザで開く
+- `index.html` をブラウザで開く
 
 ビルドツールやフレームワークは使っていません。
 

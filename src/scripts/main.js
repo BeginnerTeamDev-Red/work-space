@@ -114,7 +114,7 @@ const createOmikuji = (result) => {
     <!-- 運勢 -->
     <div>
         <img
-        src="assets/${omikuji.img}"
+        src="src/assets/${omikuji.img}"
         width="200"
         height="300"
         alt="${omikuji.name}"
