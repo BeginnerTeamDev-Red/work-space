@@ -66,10 +66,10 @@
 ```text
 project/
 ├── README.md                 # プロジェクト概要・セットアップ手順
+├── index.html                # トップページ
 ├── docs/
 │   └── project-plan.md       # 本ドキュメント
 └── src/
-    ├── index.html            # トップページ
     ├── assets/               # 画像素材
     │   ├── omikuji_box.png
     │   ├── omikuji_chuukichi.png
@@ -118,4 +118,3 @@ project/
   例: `drawResult`, `resultImage`
 - 定数は `UPPER_SNAKE_CASE` を使用する  
   例: `RESULT_LIST`
-
