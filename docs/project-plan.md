@@ -19,19 +19,13 @@
 ## 1. ゴールとスコープ
 
 ### MVP（最低限実装する機能）
-
-### 今回はやらないこと
-- 
-
----
-
-## 2. 仕様の決め方
-
-- 
+- おみくじ機能
+- 開発者についてのページ
+- おみくじについてのページ
 
 ---
 
-## 3. ブランチ運用ルール
+## 2. ブランチ運用ルール
 
 ### ブランチの役割
 - `main`：完成版・安定版（基本触らない）
@@ -47,7 +41,7 @@
 
 ---
 
-## 4. Pull Request（PR）ルール
+## 3. Pull Request（PR）ルール
 
 ### PR作成時のルール
 - PRの取り込み先（base）は必ず `develop`
@@ -56,7 +50,7 @@
 
 ---
 
-## 5. Issue運用ルール
+## 4. Issue運用ルール
 
 - 1 Issue = 1 PR を基本とします
 - Issueは小さく分割して作成します
@@ -65,29 +59,63 @@
 ---
 
 # フォルダ構成
-## 📁 プロジェクトのフォルダ構成　（予定）
+## 📁 原稿のフォルダ構成
 
-このプロジェクトでは、チーム開発をスムーズに進めるために、以下のディレクトリ構成を採用します。
+現在の原稿（リポジトリ）のフォルダ構成は以下です。
 
 ```text
 project/
 ├── README.md                 # プロジェクト概要・セットアップ手順
-├── docs/                     # 仕様書・議事録・設計メモなど（Markdown）
-│
-├── src/                      # メインのソースコード置き場
-    ├── index.html            # エントリーポイント（最初に読み込まれるHTML）
-    │
-    ├── pages/                # 複数ページ用（例：about.html など）
-    │
-    ├── assets/               # 静的ファイル（画像・アイコンなど）
-    │   ├── images/           # 画像素材
-    │   ├── icons/            # アイコン素材（SVG/PNG）
-    │   └── fonts/            # フォント素材
-    │
-    ├── styles/               # CSSファイル管理
-    │   ├── main.css          # 全体共通のスタイル
-    │   
-    │
-    └── scripts/              # JavaScriptファイル管理
-        └── main.js           # メイン処理
+├── docs/
+│   └── project-plan.md       # 本ドキュメント
+└── src/
+    ├── index.html            # トップページ
+    ├── assets/               # 画像素材
+    │   ├── omikuji_box.png
+    │   ├── omikuji_chuukichi.png
+    │   ├── omikuji_daikichi.png
+    │   ├── omikuji_daikyou.png
+    │   ├── omikuji_hole.png
+    │   ├── omikuji_kichi.png
+    │   ├── omikuji_kyou.png
+    │   ├── omikuji_stick.png
+    │   ├── omikuji_suekichi.png
+    │   └── omikuji_syoukichi.png
+    ├── pages/
+    │   ├── about.html
+    │   └── developers.html
+    ├── scripts/
+    │   └── main.js
+    └── styles/
+        └── main.css
 ```
+
+---
+
+# 命名規則
+## 🏷️ 開発時の命名ルール
+
+チーム内で表記ゆれを防ぐため、以下の命名規則を統一します。
+
+### 1. ブランチ名
+- 機能追加: `feature/機能名`
+- 単語は `kebab-case`（小文字 + ハイフン）で記述する  
+  例: `feature/omikuji-result-page`
+
+### 2. ファイル名
+- HTML/CSS/JSファイルは `kebab-case` を使用する
+- 役割が分かる名前をつける  
+  例: `developers.html`, `main.css`, `main.js`
+
+### 3. CSSのクラス名・ID名
+- クラス名は `kebab-case` を使用する  
+  例: `.result-card`, `.draw-button`
+- ID名は最小限にし、必要な場合のみ使用する  
+  例: `#omikuji-result`
+
+### 4. JavaScriptの命名
+- 変数名・関数名は `camelCase` を使用する  
+  例: `drawResult`, `resultImage`
+- 定数は `UPPER_SNAKE_CASE` を使用する  
+  例: `RESULT_LIST`
+
